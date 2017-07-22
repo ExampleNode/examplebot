@@ -5,28 +5,45 @@ var options = {
     debug: true
   },
   connection: {
-    cluster: "aws",
     reconnect: true
   },
   identity: {
-    username: "username",
-    password: "apikey"
+    username: "ExampleBot",
+    password: "APIKEY"
   },
-  channels: ["username"]
+  channels: ["#example","#example2","example3"]
 };
 
 var client = new tmi.client(options);
 client.connect();
-
-client.on('connected', function(address, port) {
-  client.action("username", "Hello i am ExampleBot i am currently in beta.");
+//Connection Message
+client.on('connected', function(address, port, channel) {
+  client.action("username", "Hello i am CoffeeBot i am currently in alpha, i love coffee and i like interacting with people, so welcome to the stream and hello.");
 });
 
 client.on('chat', function(channel, user, message, self) {
-  if(message === "!twitter") {
-  client.action("username", "twitter.com/ExampleBot");
-
-}
-
-  client.action("username", user['display-name'] + "Im currently doing something, so im good, and also hey.");
+  if(message === "!creatortwitter") {
+    client.action("channel", "twitter.com/blankktweets");
+  }
+  if(message === "!example1") {
+    client.action(channel, "example");
+  }
+  if(message === "!example2") {
+    client.action(channel, "example");
+  }
+  if(message === "!example3") {
+    client.action(channel, "example");
+  }
+  if(message === "!example4") {
+    client.action(channel, "example");
+  }
+  if(message === "!example5") {
+    client.action(channel, "example");
+  }
+  if(message === "!example6") {
+    client.action(channel, "example");
+  }
+  if(message === "!example7") {
+    client.action(channel, "example");
+  }
 });
